@@ -19,7 +19,9 @@ import org.web3j.protocol.core.methods.response.EthGetTransactionCount;
 import org.web3j.protocol.core.methods.response.EthSendTransaction;
 import org.web3j.utils.Numeric;
 
+import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.InputStreamReader;
 import java.math.BigInteger;
 import java.util.*;
 
@@ -337,6 +339,76 @@ public class SWFHelper {
 
         return rawTrasactionResponse.getTransactionHash();
     }
+
+
+    static String contractRefund(Web3j web3, Credentials credentials, String from, String contract, String hash) {
+        List<Type> inputParameters = new ArrayList<>();
+        inputParameters.add(new Bytes32(Numeric.hexStringToByteArray(hash.replaceAll("0x", ""))));
+
+        List<TypeReference<?>> outputParameters = new ArrayList<>();
+
+
+        //outputParameters.add(new TypeReference<Utf8String>() {});
+
+        Function function = new Function("refund",
+                inputParameters,
+                outputParameters);
+
+        String encodedFunction = FunctionEncoder.encode(function);
+
+        EthGetTransactionCount ethGetTransactionCount;
+        BigInteger nonce;
+
+        try {
+            ethGetTransactionCount = web3.ethGetTransactionCount(
+                    from, DefaultBlockParameterName.LATEST).send();
+            nonce = ethGetTransactionCount.getTransactionCount();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return null;
+        }
+
+        RawTransaction rawTransaction  = RawTransaction.createTransaction(
+                nonce, Wallet.GAS_PRICE_DEFAULT, Wallet.GAS_LIMIT_DEFAULT, contract, encodedFunction);
+
+        byte[] signedMessage = TransactionEncoder.signMessage(rawTransaction, credentials);
+        String hexValue = Numeric.toHexString(signedMessage);
+        EthSendTransaction rawTrasactionResponse;
+
+        try {
+            rawTrasactionResponse = web3.ethSendRawTransaction(hexValue).sendAsync().get();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return null;
+        }
+
+        String transactionHash = null;
+        int timeout = 5;
+        while (null == transactionHash && timeout != 0) {
+            transactionHash = rawTrasactionResponse.getTransactionHash();
+            try {
+                Thread.sleep(1000);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+            timeout--;
+        }
+
+//        System.out.println("Transaction hash: " + rawTrasactionResponse.getTransactionHash());
+//        System.out.println("tr.toString(): " + rawTrasactionResponse.toString());
+//        System.out.println("tr.getJsonrpc(): " + rawTrasactionResponse.getJsonrpc());
+//        System.out.println("tr.getRawResponse(): " + rawTrasactionResponse.getRawResponse());
+//        System.out.println("tr.getResult(): " + rawTrasactionResponse.getResult());
+//        System.out.println("tr.hasError(): " + rawTrasactionResponse.hasError());
+//
+//        if(rawTrasactionResponse.hasError()) {
+//            System.out.println("tr.error: " + rawTrasactionResponse.getError());
+//            System.out.println("tr.error: " + rawTrasactionResponse.getError().getMessage());
+//        }
+
+        return rawTrasactionResponse.getTransactionHash();
+    }
+
 
     static String contractRefund(Web3j web3, Credentials credentials, String from, String contract, String hash, int n) {
 
@@ -698,4 +770,52 @@ public class SWFHelper {
         Thread worker = new Thread(task);
         worker.start();
     }
+
+    static int activateInet(String clientIp) {
+        String inetScript = getServerProperty("inet_activate_script");
+
+        String[] command = { inetScript, clientIp };
+
+        try {
+        Process process = Runtime.getRuntime().exec(command);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(
+            process.getInputStream()));
+
+            String s;
+
+            while ((s = reader.readLine()) != null) {
+                System.out.println(s);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        return 1;
+    }
+
+    static int deactivateInet(String clientIp) {
+        String inetScript = getServerProperty("inet_deactivate_script");
+
+        String[] command = { inetScript, clientIp };
+
+        try {
+            Process process = Runtime.getRuntime().exec(command);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(
+                    process.getInputStream()));
+
+            String s;
+
+            while ((s = reader.readLine()) != null) {
+                System.out.println(s);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        return 1;
+
+
+    }
+
+
 }

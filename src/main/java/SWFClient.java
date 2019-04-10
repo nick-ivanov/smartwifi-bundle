@@ -32,9 +32,10 @@ public class SWFClient {
         //System.out.println("CREDENTIALS: " + credentials.toString());
 
         String port = SWFHelper.getUserProperty("port");
+        String server_host = SWFHelper.getUserProperty("server_host");
 
         // [[ SEND: TRANSMISSION #0 ]]
-        try (Socket socket = new Socket("localhost", Integer.parseInt(port))) {
+        try (Socket socket = new Socket(server_host, Integer.parseInt(port))) {
             Scanner in = new Scanner(socket.getInputStream());
             PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
 
@@ -337,10 +338,18 @@ public class SWFClient {
 
             double speed_min = Double.parseDouble(SWFHelper.getUserProperty("min_speed_mbps"));
 
-            for(int i = 0; i < chainsize; i++) {
+            int testdrive_periods = Integer.parseInt(SWFHelper.getServerProperty("testdrive_periods"));
 
-                if(SWFHelper.speed >= speed_min) {
-                    out.println("ack:" + fullHashChain.get(i));
+            int count  = 0;
+            for(int i = 0; i < chainsize * 2; i++) {
+
+                if(count >= chainsize) {
+                    break;
+                }
+
+                if(SWFHelper.speed >= speed_min || i < testdrive_periods) {
+                    out.println("ack:" + fullHashChain.get(count));
+                    count++;
                 } else {
                     out.println("TOOSLOW");
                 }
@@ -367,6 +376,9 @@ public class SWFClient {
                 SWFHelper.nbSleep(subperiod_msec);
             }
 
+            try { Thread.sleep(1800000); } catch (Exception ex) { ex.printStackTrace(); }
+
+            SWFHelper.contractRefund(web3, credentials, wallet_public, contract, secret.getTop());
         }
     }
 }

@@ -198,12 +198,12 @@ class SWFServerWorker extends Thread {
 
                 if (goodAck) {
                     if(!internetActivated) {
-                        SWFHelper.activateInternet(clientIp);
+                        SWFHelper.activateInet(clientIp);
                         internetActivated = true;
                     }
                 } else {
                     if(internetActivated) {
-                        SWFHelper.deactivateInternet(clientIp);
+                        SWFHelper.deactivateInet(clientIp);
                         internetActivated = false;
                     }
                 }
@@ -270,10 +270,6 @@ class SWFServerWorker extends Thread {
                     writer.println("NOHASHNOSERVICE");
                 }
             }
-
-
-
-
 
 //            if (!line.trim().equals("OK")) {
 //                writer.println("bye!");
