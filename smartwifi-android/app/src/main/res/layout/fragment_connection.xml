@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:columnCount="3">
+
+
+    <!-- SSID -->
+    <ImageView
+        android:layout_margin="4dp"
+        android:layout_marginRight="12dp"
+        android:id="@+id/listicon0"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_columnSpan="1"
+        android:layout_gravity="left"
+        android:src="@drawable/ic_wifi_black_24dp"
+        />
+
+    <TextView
+        android:layout_margin="3dp"
+        android:layout_marginRight="12dp"
+        android:textStyle="bold"
+        android:id="@+id/message01"
+        android:text="WiFi SSID"
+        />
+
+    <TextView
+        android:layout_margin="3dp"
+        android:id="@+id/message02"
+        android:text="smartwifi-lab-router2"
+        />
+
+
+    <!-- Connection Status-->
+    <ImageView
+        android:layout_margin="3dp"
+        android:layout_marginRight="12dp"
+        android:id="@+id/listicon1"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_columnSpan="1"
+        android:layout_gravity="left"
+        android:src="@drawable/ic_public_black_24dp"
+        />
+
+
+    <TextView
+        android:layout_margin="3dp"
+        android:layout_marginRight="12dp"
+        android:textStyle="bold"
+        android:id="@+id/message11"
+        android:text="Connection Status"
+        />
+
+    <TextView
+        android:layout_margin="3dp"
+        android:id="@+id/messageActive"
+        android:text=""
+        android:textColor="#43A047"
+        />
+
+    <!-- Router IP -->
+    <ImageView
+        android:layout_margin="3dp"
+        android:layout_marginRight="12dp"
+        android:id="@+id/listicon2"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_columnSpan="1"
+        android:layout_gravity="left"
+        android:src="@drawable/ic_router_black_24dp"
+        />
+
+
+    <TextView
+        android:layout_margin="3dp"
+        android:layout_marginRight="12dp"
+        android:textStyle="bold"
+        android:id="@+id/message21"
+        android:text="Router IP"
+
+        />
+
+    <TextView
+        android:layout_margin="3dp"
+        android:id="@+id/message22"
+        android:text="10.42.0.1"
+        />
+
+
+    <!-- Average Speed -->
+    <ImageView
+        android:layout_margin="3dp"
+        android:layout_marginRight="12dp"
+        android:id="@+id/listicon3"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_columnSpan="1"
+        android:layout_gravity="left"
+        android:src="@drawable/ic_network_check_black_24dp"
+        />
+
+    <TextView
+        android:layout_margin="3dp"
+        android:layout_marginRight="12dp"
+        android:textStyle="bold"
+        android:id="@+id/message31"
+        android:text="Average Speed"
+        />
+
+    <TextView
+        android:layout_margin="3dp"
+        android:id="@+id/message32"
+        android:text=""
+        />
+
+
+    <!-- Active Connection Time -->
+    <ImageView
+        android:layout_margin="3dp"
+        android:layout_marginRight="12dp"
+        android:id="@+id/listicon4"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_columnSpan="1"
+        android:layout_gravity="left"
+        android:src="@drawable/ic_timer_black_24dp"
+        />
+
+
+    <TextView
+        android:layout_margin="3dp"
+        android:layout_marginRight="12dp"
+        android:textStyle="bold"
+        android:id="@+id/message41"
+        android:text="Active Connection Time"
+        />
+
+
+    <Chronometer
+        android:layout_margin="3dp"
+        android:id="@+id/simpleChronometer"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20sp" />
+
+
+    <!-- Total Connection Time -->
+    <ImageView
+        android:layout_margin="3dp"
+        android:layout_marginRight="12dp"
+        android:id="@+id/listicon5"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_columnSpan="1"
+        android:layout_gravity="left"
+        android:src="@drawable/ic_hourglass_full_black_24dp"
+        />
+
+
+    <TextView
+        android:layout_margin="3dp"
+        android:layout_marginRight="12dp"
+        android:textStyle="bold"
+        android:id="@+id/message51"
+        android:text="Total Connection Time"
+        />
+
+
+    <Chronometer
+        android:layout_margin="3dp"
+        android:id="@+id/simpleChronometer1"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20sp" />
+
+    <!-- Price per Minute -->
+    <ImageView
+        android:layout_margin="3dp"
+        android:layout_marginRight="12dp"
+        android:id="@+id/listicon6"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_columnSpan="1"
+        android:layout_gravity="left"
+        android:src="@drawable/ic_attach_money_black_24dp"
+        />
+
+    <TextView
+        android:layout_margin="3dp"
+        android:layout_marginRight="12dp"
+        android:textStyle="bold"
+        android:id="@+id/message61"
+        android:text="Price per Minute"
+        />
+
+    <TextView
+        android:layout_margin="3dp"
+        android:id="@+id/message62"
+        android:text="0.0012 ETH"
+        />
+
+    <!-- Ethereum Gas Fees Paid -->
+    <ImageView
+        android:layout_margin="3dp"
+        android:layout_marginRight="12dp"
+        android:id="@+id/listicon7"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_columnSpan="1"
+        android:layout_gravity="left"
+        android:src="@drawable/ic_local_gas_station_black_24dp"
+        />
+
+    <TextView
+        android:layout_margin="3dp"
+        android:layout_marginRight="12dp"
+        android:textStyle="bold"
+        android:id="@+id/message71"
+        android:text="Ethereum Gas Fees"
+        />
+
+    <TextView
+        android:layout_margin="3dp"
+        android:id="@+id/message72"
+        android:text="0.00067368 ETH"
+        />
+
+
+    <!-- Total Charge -->
+    <ImageView
+        android:layout_margin="3dp"
+        android:layout_marginRight="12dp"
+        android:id="@+id/listicon8"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_columnSpan="1"
+        android:layout_gravity="left"
+        android:src="@drawable/ic_shopping_cart_black_24dp"
+        />
+
+    <TextView
+        android:layout_margin="3dp"
+        android:layout_marginRight="12dp"
+        android:textStyle="bold"
+        android:id="@+id/message81"
+        android:text="Total Charge"
+        />
+
+    <TextView
+        android:layout_margin="3dp"
+        android:id="@+id/message82"
+        android:text="0.01627368 ETH"
+        />
+
+
+    <!-- Ethereum Wallet -->
+    <ImageView
+        android:layout_margin="3dp"
+        android:layout_marginRight="12dp"
+        android:id="@+id/listicon9"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_columnSpan="1"
+        android:layout_gravity="left"
+        android:src="@drawable/ic_account_balance_wallet_black_24dp"
+        />
+
+    <TextView
+        android:layout_margin="3dp"
+        android:layout_marginRight="12dp"
+        android:textStyle="bold"
+        android:id="@+id/message91"
+        android:text="Ethereum Wallet"
+        />
+
+    <TextView
+        android:id="@+id/message92"
+        android:layout_width="122dp"
+        android:layout_margin="3dp"
+        android:text="" />
+
+    <!-- Blockchain Network -->
+    <ImageView
+        android:layout_margin="3dp"
+        android:layout_marginRight="12dp"
+        android:id="@+id/listicon10"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_columnSpan="1"
+        android:layout_gravity="left"
+        android:src="@drawable/ic_account_balance_black_24dp"
+        />
+
+    <TextView
+        android:layout_margin="3dp"
+        android:layout_marginRight="12dp"
+        android:textStyle="bold"
+        android:id="@+id/message101"
+        android:text="Blockchain Network"
+        />
+
+    <TextView
+        android:layout_margin="3dp"
+        android:id="@+id/message102"
+        android:text="Ropsten"
+        />
+
+
+    <!-- Smart Contract Address -->
+    <ImageView
+        android:layout_margin="3dp"
+        android:layout_marginRight="12dp"
+        android:id="@+id/listicon11"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_columnSpan="1"
+        android:layout_gravity="left"
+        android:src="@drawable/ic_insert_drive_file_black_24dp"
+        />
+
+    <TextView
+        android:layout_margin="3dp"
+        android:layout_marginRight="12dp"
+        android:textStyle="bold"
+        android:id="@+id/message111"
+        android:text="Smart Contract Address"
+        />
+
+    <TextView
+        android:id="@+id/message112"
+        android:layout_width="138dp"
+        android:layout_margin="3dp"
+        android:text="0x5B356D...9C59c0" />
+
+    <!-- Smart Contract Status -->
+    <ImageView
+        android:layout_margin="3dp"
+        android:layout_marginRight="12dp"
+        android:id="@+id/listicon12"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_columnSpan="1"
+        android:layout_gravity="left"
+        android:src="@drawable/ic_verified_user_black_24dp"
+        />
+
+    <TextView
+        android:layout_marginVertical="3dp"
+        android:layout_marginRight="12dp"
+        android:textStyle="bold"
+        android:id="@+id/message121"
+        android:text="Smart Contract Status"
+        />
+
+    <TextView
+        android:layout_margin="3dp"
+        android:id="@+id/message122"
+        android:text="Funded (0.072 ETH)"
+        />
+
+
+
+    <!-- Button -->
+
+    <TextView
+        android:layout_marginVertical="3dp"
+        android:layout_marginRight="12dp"
+        android:id="@+id/message13"
+        android:text=""
+        />
+
+
+    <Button
+        android:layout_margin="1dp"
+        android:id="@+id/button1"
+        android:layout_columnSpan="2"
+        android:layout_gravity="center"
+        android:text="Disconnect"
+        android:background="#FFAB91"
+        android:paddingHorizontal="10dp"
+        android:layout_height="32dp"
+        android:drawableLeft="@drawable/ic_highlight_off_black_24dp"
+        />
+
+
+</GridLayout>
+
+<!--
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:gravity="left">
+    <TextView
+        android:id="@+id/connectionMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:text="Connection" />
+
+    <TextView
+        android:id="@+id/connectionInfoText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/connectionMessage"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:text="Connection Info"
+        android:textAllCaps="false"
+        android:textColor="@color/colorPrimary"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+    <TextView
+        android:id="@+id/connectionBoolText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/connectionInfoText"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:text="Connection Status: "
+        android:textAllCaps="false"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/connectionBool2Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/connectionInfoText"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_toRightOf="@+id/connectionBoolText"
+        android:text="Dissconnected"
+        android:textAllCaps="false"
+        android:textColor="@color/colorAccent"
+        android:textSize="20sp"
+        android:textStyle="bold|italic" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/ipText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/connectionBoolText"
+
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:text="IP: NONE"
+        android:textAllCaps="false"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+    <TextView
+        android:id="@+id/connectionTimeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ipText"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:text="Connection Time: "
+        android:textAllCaps="false"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+
+
+    <Chronometer
+        android:id="@+id/simpleChronometer"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20sp" />
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:layout_height="31dp"
+        android:layout_marginTop="15dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="Disconnect"
+        android:textColor="@color/colorAccent" />;
+        android:text="Button" />
+
+
+</LinearLayout>
+
+-->

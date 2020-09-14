@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">SmartWiFi</string>
+    <string name="title_hotspots">Hotspots</string>
+    <string name="title_connection">Connection</string>
+    <string name="title_settings">Settings</string>
+    <string name="title_about">About</string>
+</resources>
